@@ -1,0 +1,774 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		8221EE2462D0492AB344DD6D /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B1494461C4024FEBA0BFBBF4 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				EFB112145652423FB607EE18 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		CE15874E071248AC9351F734 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5867AD72A4E548FC8473C25C /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				8CA9BDD964344C46A5FEC746 /* CMake Rules */,
+			);
+			dependencies = (
+				3E3EC68AC47F42D7A6D63D02 /* PBXTargetDependency */,
+				69585C1DD1EC470E903AE66E /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88A970D9534843D9807C81E4 /* ReflexController.cpp */; };
+		EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12F5618D22C349DFAB4BB9BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F2A125694524571A8BCB11D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBDD46D53E264D15B3D7542C;
+			remoteInfo = ReflexController;
+		};
+		5171D3DBC26246A8805A091A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F2A125694524571A8BCB11D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8221EE2462D0492AB344DD6D;
+			remoteInfo = ZERO_CHECK;
+		};
+		7D42F17B6C264F168CC09FFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F2A125694524571A8BCB11D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8221EE2462D0492AB344DD6D;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		177D223C6D8D451AA1760F6D /* ReflexController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = ReflexController; sourceTree = BUILT_PRODUCTS_DIR; };
+		2182C2C7B1854EB4AFC8F7C8 /* osimReflexControllerDLL.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = osimReflexControllerDLL.h; sourceTree = SOURCE_ROOT; };
+		3197E35B097E4FCE9A48B15F /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		35369CC1277B49D8B0270089 /* ReflexController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = ReflexController.h; sourceTree = SOURCE_ROOT; };
+		88A970D9534843D9807C81E4 /* ReflexController.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ReflexController.cpp; sourceTree = SOURCE_ROOT; };
+		DC6F3C107A07459B8C9DD5DA /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		EF773DD42759826E0080CCBE /* SimpleSpindle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSpindle.h; sourceTree = "<group>"; };
+		EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleSpindle.cpp; sourceTree = "<group>"; };
+		EF773DD72759C11F0080CCBE /* osimSimpleSpindleDLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osimSimpleSpindleDLL.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		562419ACF468461E9189446A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F992C0547BB4526A2A777E9 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */,
+				88A970D9534843D9807C81E4 /* ReflexController.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		31E94DF15CC545CD9ABB1C96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				177D223C6D8D451AA1760F6D /* ReflexController */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CC68BA247F646F2B11B440B /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				6599B312C44C430DABEBC3AE /* CMake Rules */,
+				DC6F3C107A07459B8C9DD5DA /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		59F7EFE0FE3F4B049E51AC2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		618990413B2941DE9F33E062 = {
+			isa = PBXGroup;
+			children = (
+				9F00B233D5A44E5980DBE8D0 /* ReflexController */,
+				4CC68BA247F646F2B11B440B /* ALL_BUILD */,
+				31E94DF15CC545CD9ABB1C96 /* Products */,
+				59F7EFE0FE3F4B049E51AC2D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6599B312C44C430DABEBC3AE /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		8AFCD78A4AF44EBCBDDB46CB /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF773DD72759C11F0080CCBE /* osimSimpleSpindleDLL.h */,
+				EF773DD42759826E0080CCBE /* SimpleSpindle.h */,
+				35369CC1277B49D8B0270089 /* ReflexController.h */,
+				2182C2C7B1854EB4AFC8F7C8 /* osimReflexControllerDLL.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		9F00B233D5A44E5980DBE8D0 /* ReflexController */ = {
+			isa = PBXGroup;
+			children = (
+				0F992C0547BB4526A2A777E9 /* Source Files */,
+				8AFCD78A4AF44EBCBDDB46CB /* Header Files */,
+				3197E35B097E4FCE9A48B15F /* CMakeLists.txt */,
+			);
+			name = ReflexController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBDD46D53E264D15B3D7542C /* ReflexController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CB80B09EDF1407F98D768D7 /* Build configuration list for PBXNativeTarget "ReflexController" */;
+			buildPhases = (
+				960F90DED9344E2FBB1C2BE6 /* Sources */,
+				562419ACF468461E9189446A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				065C73F64F4D464886EF2918 /* PBXTargetDependency */,
+			);
+			name = ReflexController;
+			productName = ReflexController;
+			productReference = 177D223C6D8D451AA1760F6D /* ReflexController */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F2A125694524571A8BCB11D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1130;
+			};
+			buildConfigurationList = 3DDB1AF266A04EE796C68887 /* Build configuration list for PBXProject "ReflexController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 618990413B2941DE9F33E062;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				CE15874E071248AC9351F734 /* ALL_BUILD */,
+				FBDD46D53E264D15B3D7542C /* ReflexController */,
+				8221EE2462D0492AB344DD6D /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8CA9BDD964344C46A5FEC746 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build -f /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		EFB112145652423FB607EE18 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build -f /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		960F90DED9344E2FBB1C2BE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */,
+				EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		065C73F64F4D464886EF2918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8221EE2462D0492AB344DD6D /* ZERO_CHECK */;
+			targetProxy = 5171D3DBC26246A8805A091A /* PBXContainerItemProxy */;
+		};
+		3E3EC68AC47F42D7A6D63D02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBDD46D53E264D15B3D7542C /* ReflexController */;
+			targetProxy = 12F5618D22C349DFAB4BB9BC /* PBXContainerItemProxy */;
+		};
+		69585C1DD1EC470E903AE66E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8221EE2462D0492AB344DD6D /* ZERO_CHECK */;
+			targetProxy = 7D42F17B6C264F168CC09FFF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03E413EBE09647D0A3DC12B7 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks,
+					"$(inherited)",
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					SPDLOG_COMPILED_LIB,
+					OPENSIM_WITH_CASADI,
+					OPENSIM_WITH_TROPTER,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/lib\" \"/Applications/OpenSim 4.3/sdk/Simbody/lib\" $(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++11'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimExampleComponents.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimMoco.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimTools.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimAnalyses.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimActuators.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimSimulation.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimCommon.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/spdlog/lib/spdlog/libspdlog.a\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKsimbody.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKmath.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKcommon.3.8.dylib\"",
+					"-framework",
+					Accelerate,
+					"-lm",
+					"-ldl",
+					"-ldl",
+					"-lm",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimLepton.dylib\"",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ReflexController;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/include\" \"/Applications/OpenSim 4.3/sdk/include/OpenSim\" \"/Applications/OpenSim 4.3/sdk/Simbody/include/simbody\" \"/Applications/OpenSim 4.3/sdk/spdlog/include\" $(inherited)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		0CB19A739B914F4AB8D91405 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build/build;
+			};
+			name = RelWithDebInfo;
+		};
+		1DDC99907CF14D2D8F059F53 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		366943DCB3D74E8787ED9A73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		464C3F7447FF4A02A672E96B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build/build;
+			};
+			name = Debug;
+		};
+		6DC7D05B1B104AFFBBACD46A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		78F1A73BB347480FB1956029 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks,
+					"$(inherited)",
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					SPDLOG_COMPILED_LIB,
+					OPENSIM_WITH_CASADI,
+					OPENSIM_WITH_TROPTER,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/lib\" \"/Applications/OpenSim 4.3/sdk/Simbody/lib\" $(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++11'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimExampleComponents.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimMoco.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimTools.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimAnalyses.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimActuators.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimSimulation.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimCommon.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/spdlog/lib/spdlog/libspdlog.a\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKsimbody.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKmath.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKcommon.3.8.dylib\"",
+					"-framework",
+					Accelerate,
+					"-lm",
+					"-ldl",
+					"-ldl",
+					"-lm",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimLepton.dylib\"",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ReflexController;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/include\" \"/Applications/OpenSim 4.3/sdk/include/OpenSim\" \"/Applications/OpenSim 4.3/sdk/Simbody/include/simbody\" \"/Applications/OpenSim 4.3/sdk/spdlog/include\" $(inherited)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		7FD5DB096A334ACB88F40FAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks,
+					"$(inherited)",
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					SPDLOG_COMPILED_LIB,
+					OPENSIM_WITH_CASADI,
+					OPENSIM_WITH_TROPTER,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/lib\" \"/Applications/OpenSim 4.3/sdk/Simbody/lib\" $(inherited)";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++11' ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimExampleComponents.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimMoco.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimTools.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimAnalyses.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimActuators.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimSimulation.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimCommon.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/spdlog/lib/spdlog/libspdlog.a\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKsimbody.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKmath.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKcommon.3.8.dylib\"",
+					"-framework",
+					Accelerate,
+					"-lm",
+					"-ldl",
+					"-ldl",
+					"-lm",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimLepton.dylib\"",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ReflexController;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/include\" \"/Applications/OpenSim 4.3/sdk/include/OpenSim\" \"/Applications/OpenSim 4.3/sdk/Simbody/include/simbody\" \"/Applications/OpenSim 4.3/sdk/spdlog/include\" $(inherited)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		8079DC4AA7FF42D8ABF36057 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		92F74BC05D334DE980BA926A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build/build;
+			};
+			name = MinSizeRel;
+		};
+		ACB20254C3064842A740FAEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		B67EEE6C5B3C44CBB3196303 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		BC9F4DAF1A6D4991A599AED4 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		E1D2EF549E264F2C90E65293 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		F2D25B8886A249EE87A7F886 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks,
+					"$(inherited)",
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					SPDLOG_COMPILED_LIB,
+					OPENSIM_WITH_CASADI,
+					OPENSIM_WITH_TROPTER,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/lib\" \"/Applications/OpenSim 4.3/sdk/Simbody/lib\" $(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=gnu++11'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimExampleComponents.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimMoco.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimTools.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimAnalyses.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimActuators.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimSimulation.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimCommon.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/spdlog/lib/spdlog/libspdlog.a\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKsimbody.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKmath.3.8.dylib\"",
+					"\"/Applications/OpenSim 4.3/sdk/Simbody/lib/libSimTKcommon.3.8.dylib\"",
+					"-framework",
+					Accelerate,
+					"-lm",
+					"-ldl",
+					"-ldl",
+					"-lm",
+					"\"/Applications/OpenSim 4.3/sdk/lib/libosimLepton.dylib\"",
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ReflexController;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"/Applications/OpenSim 4.3/sdk/include\" \"/Applications/OpenSim 4.3/sdk/include/OpenSim\" \"/Applications/OpenSim 4.3/sdk/Simbody/include/simbody\" \"/Applications/OpenSim 4.3/sdk/spdlog/include\" $(inherited)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		FAC6568F869C4B7E9FF30EAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/hjaltihilmarsson/Documents/OpenSim/4.3/Code/CPP/ReflexController/build/build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3CB80B09EDF1407F98D768D7 /* Build configuration list for PBXNativeTarget "ReflexController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FD5DB096A334ACB88F40FAD /* Debug */,
+				F2D25B8886A249EE87A7F886 /* Release */,
+				03E413EBE09647D0A3DC12B7 /* MinSizeRel */,
+				78F1A73BB347480FB1956029 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3DDB1AF266A04EE796C68887 /* Build configuration list for PBXProject "ReflexController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				464C3F7447FF4A02A672E96B /* Debug */,
+				FAC6568F869C4B7E9FF30EAE /* Release */,
+				92F74BC05D334DE980BA926A /* MinSizeRel */,
+				0CB19A739B914F4AB8D91405 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5867AD72A4E548FC8473C25C /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1D2EF549E264F2C90E65293 /* Debug */,
+				366943DCB3D74E8787ED9A73 /* Release */,
+				B67EEE6C5B3C44CBB3196303 /* MinSizeRel */,
+				8079DC4AA7FF42D8ABF36057 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B1494461C4024FEBA0BFBBF4 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACB20254C3064842A740FAEA /* Debug */,
+				6DC7D05B1B104AFFBBACD46A /* Release */,
+				1DDC99907CF14D2D8F059F53 /* MinSizeRel */,
+				BC9F4DAF1A6D4991A599AED4 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F2A125694524571A8BCB11D /* Project object */;
+}
