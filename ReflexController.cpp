@@ -138,6 +138,7 @@ void ReflexController::computeControls(const State& s,
     double t = s.getTime();
     
 
+    double f_o = 0;
     double stretch = 0;
     // muscle lengthening speed
     double speed = 0;
@@ -153,12 +154,9 @@ void ReflexController::computeControls(const State& s,
     
     stretch = spindle->getSignal(s);
     
-    // compute the muscle lengthening(stretch) speed
-    speed = musc.getLengtheningSpeed(s);
-    // un-normalize muscle's maximum contraction velocity (fib_lengths/sec)
-    max_speed =
-        musc.getOptimalFiberLength()*musc.getMaxContractionVelocity();
-    control = 0.5*get_gain()*(fabs(speed)+speed)/max_speed;
+    f_o = musc.getOptimalFiberLength();
+    
+    control = 0.5*get_gain()*(fabs(stretch)+stretch)/f_o;
 
     SimTK::Vector actControls(1,control);
     // add reflex controls to whatever controls are already in place.
