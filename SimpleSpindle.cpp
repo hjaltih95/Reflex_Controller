@@ -97,8 +97,6 @@ void SimpleSpindle::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
 
-    // get the list of spindles assigned to the muscles
-    Set<const SimpleSpindle>& spindles = updSpindles();
     
 }
 

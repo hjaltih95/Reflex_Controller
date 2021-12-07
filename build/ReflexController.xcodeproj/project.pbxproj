@@ -36,6 +36,7 @@
 /* Begin PBXBuildFile section */
 		7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88A970D9534843D9807C81E4 /* ReflexController.cpp */; };
 		EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */; };
+		EF773DD9275EDC860080CCBE /* mainSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD8275EDC860080CCBE /* mainSpindle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		EF773DD42759826E0080CCBE /* SimpleSpindle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSpindle.h; sourceTree = "<group>"; };
 		EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleSpindle.cpp; sourceTree = "<group>"; };
 		EF773DD72759C11F0080CCBE /* osimSimpleSpindleDLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osimSimpleSpindleDLL.h; sourceTree = "<group>"; };
+		EF773DD8275EDC860080CCBE /* mainSpindle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainSpindle.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		0F992C0547BB4526A2A777E9 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				EF773DD8275EDC860080CCBE /* mainSpindle.cpp */,
 				EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */,
 				88A970D9534843D9807C81E4 /* ReflexController.cpp */,
 			);
@@ -236,6 +239,7 @@
 			files = (
 				7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */,
 				EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */,
+				EF773DD9275EDC860080CCBE /* mainSpindle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

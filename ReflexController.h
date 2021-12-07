@@ -62,12 +62,13 @@ public:
         "The intended rest length of the spindle");
     OpenSim_DECLARE_PROPERTY(gain, double,
     "The factor by which the stretch reflex is scaled.");
+
     
 //=============================================================================
 // SOCKETS
 //=============================================================================
 
- 
+     OpenSim_DECLARE_SOCKET(muscle, Muscle, "The muscle that the controller controls");
     
 //=============================================================================
 // METHODS
@@ -77,7 +78,9 @@ public:
     //--------------------------------------------------------------------------
     /** Default constructor. */
     ReflexController();
-    ReflexController(double rest_length,
+    ReflexController(const std::string& name,
+                     const Muscle& muscle,
+                     double rest_length,
                      double gain);
 
     // Uses default (compiler-generated) destructor, copy constructor and copy 

@@ -50,10 +50,16 @@ ReflexController::ReflexController()
 }
 
 /* Convenience constructor. */
-ReflexController::ReflexController(double rest_length,
+ReflexController::ReflexController(const std::string& name,
+                                   const Muscle& muscle,
+                                   double rest_length,
                                    double gain)
 {
-
+    OPENSIM_THROW_IF(name.empty(), ComponentHasNoName, getClassName());
+       
+    setName(name);
+    connectSocket_muscle(muscle);
+    
     constructProperties();
     set_normalized_rest_length(rest_length);
     set_gain(gain);
@@ -147,7 +153,6 @@ void ReflexController::computeControls(const State& s,
     //reflex control
     double control = 0;
     
-    // get a reference to the muscle we are controlling
     const Muscle& musc = getMuscle();
 
     const SimpleSpindle *spindle = new SimpleSpindle();
