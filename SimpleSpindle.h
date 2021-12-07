@@ -116,7 +116,6 @@ public:
     void setSignal(SimTK::State& s, double signal) const;
     double getSignal(const SimTK::State& s) const;
     
-    virtual void addInSignals(const SimTK::Vector& muscleSignals, SimTK::Vector& modelSignals) const;
     
     
 

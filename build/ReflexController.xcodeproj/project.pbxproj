@@ -74,6 +74,10 @@
 		EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleSpindle.cpp; sourceTree = "<group>"; };
 		EF773DD72759C11F0080CCBE /* osimSimpleSpindleDLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osimSimpleSpindleDLL.h; sourceTree = "<group>"; };
 		EF773DD8275EDC860080CCBE /* mainSpindle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainSpindle.cpp; sourceTree = "<group>"; };
+		EF773DDA275F43000080CCBE /* anchor2.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = anchor2.vtp; sourceTree = "<group>"; };
+		EF773DDB275F43000080CCBE /* anchor1.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = anchor1.vtp; sourceTree = "<group>"; };
+		EF773DDC275F43000080CCBE /* ground.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ground.vtp; sourceTree = "<group>"; };
+		EF773DDD275F43010080CCBE /* block.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = block.vtp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,10 @@
 		0F992C0547BB4526A2A777E9 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				EF773DDB275F43000080CCBE /* anchor1.vtp */,
+				EF773DDA275F43000080CCBE /* anchor2.vtp */,
+				EF773DDD275F43010080CCBE /* block.vtp */,
+				EF773DDC275F43000080CCBE /* ground.vtp */,
 				EF773DD8275EDC860080CCBE /* mainSpindle.cpp */,
 				EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */,
 				88A970D9534843D9807C81E4 /* ReflexController.cpp */,

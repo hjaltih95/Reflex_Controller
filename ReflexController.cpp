@@ -125,7 +125,10 @@ void ReflexController::extendConnectToModel(Model &model)
 // Muscle to control
 //-----------------------------------------------------------------------------
 
-
+const Muscle& ReflexController::getMuscle() const
+{
+    return getSocket<Muscle>("muscle").getConnectee();
+}
 
 //=============================================================================
 // COMPUTATIONS
@@ -146,10 +149,6 @@ void ReflexController::computeControls(const State& s,
 
     double f_o = 0;
     double stretch = 0;
-    // muscle lengthening speed
-    double speed = 0;
-    // max muscle lengthening (stretch) speed
-    double max_speed = 0;
     //reflex control
     double control = 0;
     
