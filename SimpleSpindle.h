@@ -36,11 +36,6 @@
 
 namespace OpenSim {
 
-
-// Forward declarations of classes that are used by the spindle implementation
-class Actuator;
-
-
 //=============================================================================
 //=============================================================================
 /**
@@ -71,7 +66,7 @@ public:
 // OUTPUTS
 //=============================================================================
     // we get our propriceptive afferents
-    OpenSim_DECLARE_OUTPUT(signal, double, getSignal, SimTK::Stage::Velocity);
+    OpenSim_DECLARE_OUTPUT(signal, double, getSignal, SimTK::Stage::Position);
     // add outputs for Ia and II afferents
 //=============================================================================
 // METHODS
@@ -87,13 +82,6 @@ public:
 
     // Uses default (compiler-generated) destructor, copy constructor and copy 
     // assignment operator.
-    
-//--------------------------------------------------------------------------
-// Spindle Interface
-//--------------------------------------------------------------------------
-    
-    /* get a writable reference to the set of const spindles in the muscle */
-    Set<const SimpleSpindle>& updSpindles();
 
 //--------------------------------------------------------------------------
 // SPINDLE PARAMETER ACCESSORS
@@ -116,17 +104,7 @@ public:
     void setSignal(SimTK::State& s, double signal) const;
     double getSignal(const SimTK::State& s) const;
     
-    
-    
 
-    /** Compute the signals for spindles
-     *  This method defines the behavior of the spindles
-     *
-     * @param s         system state 
-     * @param signals  writable model signals
-     */
-    void computeSignals(const SimTK::State& s,
-                         SimTK::Vector &signals) const;
 
 
 private:

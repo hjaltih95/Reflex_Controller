@@ -36,7 +36,7 @@
 /* Begin PBXBuildFile section */
 		7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88A970D9534843D9807C81E4 /* ReflexController.cpp */; };
 		EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */; };
-		EF773DD9275EDC860080CCBE /* mainSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD8275EDC860080CCBE /* mainSpindle.cpp */; };
+		EFB7B010275F7E890086F942 /* mainSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD8275EDC860080CCBE /* mainSpindle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +78,7 @@
 		EF773DDB275F43000080CCBE /* anchor1.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = anchor1.vtp; sourceTree = "<group>"; };
 		EF773DDC275F43000080CCBE /* ground.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ground.vtp; sourceTree = "<group>"; };
 		EF773DDD275F43010080CCBE /* block.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = block.vtp; sourceTree = "<group>"; };
+		EFB7B00F275F7D940086F942 /* ReflexController */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ReflexController; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,7 @@
 				EF773DDA275F43000080CCBE /* anchor2.vtp */,
 				EF773DDD275F43010080CCBE /* block.vtp */,
 				EF773DDC275F43000080CCBE /* ground.vtp */,
+				EFB7B00F275F7D940086F942 /* ReflexController */,
 				EF773DD8275EDC860080CCBE /* mainSpindle.cpp */,
 				EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */,
 				88A970D9534843D9807C81E4 /* ReflexController.cpp */,
@@ -247,7 +249,7 @@
 			files = (
 				7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */,
 				EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */,
-				EF773DD9275EDC860080CCBE /* mainSpindle.cpp in Sources */,
+				EFB7B010275F7E890086F942 /* mainSpindle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

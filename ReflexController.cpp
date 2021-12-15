@@ -51,14 +51,12 @@ ReflexController::ReflexController()
 
 /* Convenience constructor. */
 ReflexController::ReflexController(const std::string& name,
-                                   const Muscle& muscle,
                                    double rest_length,
                                    double gain)
 {
     OPENSIM_THROW_IF(name.empty(), ComponentHasNoName, getClassName());
        
     setName(name);
-    connectSocket_muscle(muscle);
     
     constructProperties();
     set_normalized_rest_length(rest_length);
@@ -95,13 +93,55 @@ void ReflexController::constructProperties()
      */
     constructProperty_normalized_rest_length(1.0);
     constructProperty_gain(1.0);
+    constructProperty_spindle_list();
+    
+    _spindleSet.setMemoryOwner(false);
+
 }
+
 
 void ReflexController::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
-
+    
+    _spindleSet.setMemoryOwner(false);
+    _spindleSet.setSize(0);
+    
+    int nac = getProperty_spindle_list().size();
+    if (nac == 0)
+        return;
+    
+    auto spindles = model.getComponentList<SimpleSpindle>();
+    if (IO::Uppercase(get_spindle_list(0)) == "ALL") {
+        for (auto& spindle : spindles) {
+            _spindleSet.adoptAndAppend(&spindle);
+        }
+        return;
+    }
+    
+    else {
+        for (int i = 0; i < nac; i++) {
+            bool found = false;
+            for (auto& spindle : spindles) {
+                if (get_spindle_list(i) == spindle.getName()) {
+                    _spindleSet.adoptAndAppend(&spindle);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                cerr << "WARN: ReflexController::connectToModel : SimpleSpindle "
+                << get_spindle_list(i) <<
+                " was not found and will be ignored." << endl;
+            }
+        }
+    }
+    
+    
+    
     Set<const Actuator>& actuators = updActuators();
+
+    
     
     int cnt=0;
     
@@ -109,7 +149,7 @@ void ReflexController::extendConnectToModel(Model &model)
         const Muscle *musc = dynamic_cast<const Muscle*>(&actuators[cnt]);
         // control muscles only
         if(!musc){
-            log_warn("ToyReflexController assigned a non-muscle actuator '{}', "
+            log_warn("ReflexController assigned a non-muscle actuator '{}', "
                     "which will be ignored.", actuators[cnt].getName());
             actuators.remove(cnt);
         }else
@@ -121,14 +161,30 @@ void ReflexController::extendConnectToModel(Model &model)
 // GET AND SET
 //=============================================================================
 
-//-----------------------------------------------------------------------------
-// Muscle to control
-//-----------------------------------------------------------------------------
-
-const Muscle& ReflexController::getMuscle() const
+void ReflexController::setSpindles(const Set<SimpleSpindle>& spindles)
 {
-    return getSocket<Muscle>("muscle").getConnectee();
+    _spindleSet.setMemoryOwner(false);
+    
+    _spindleSet.setSize(0);
+    updProperty_spindle_list().clear();
+    for (int i = 0; i<spindles.getSize(); i++) {
+        addSpindle(spindles[i]);
+    }
 }
+
+void ReflexController::addSpindle(const SimpleSpindle& spindle) {
+    _spindleSet.adoptAndAppend(&spindle);
+    
+    int found = updProperty_spindle_list().findIndex(spindle.getName());
+    if (found < 0)
+        updProperty_spindle_list().appendValue(spindle.getName());
+}
+
+Set <const SimpleSpindle>& ReflexController::updSpindles() { return _spindleSet; }
+
+const Set<const SimpleSpindle>& ReflexController::getSpindleSet() const { return _spindleSet; }
+
+
 
 //=============================================================================
 // COMPUTATIONS
@@ -145,26 +201,30 @@ void ReflexController::computeControls(const State& s,
                                           Vector &controls) const {
     // get time
     double t = s.getTime();
-    
 
     double f_o = 0;
     double stretch = 0;
     //reflex control
     double control = 0;
     
-    const Muscle& musc = getMuscle();
+    const Set<const SimpleSpindle>& spindles = getSpindleSet();
+    
+    // make a for loop for all the spindles
+    for (int i = 0; i< spindles.getSize(); i++) {
+        const SimpleSpindle& spindle = spindles.get(i);
+        stretch = spindle.getSignal(s);
 
-    const SimpleSpindle *spindle = new SimpleSpindle();
+        const Muscle& musc = spindle.getMuscle();
     
-    stretch = spindle->getSignal(s);
+        f_o = musc.getOptimalFiberLength();
     
-    f_o = musc.getOptimalFiberLength();
-    
-    control = 0.5*get_gain()*(fabs(stretch)+stretch)/f_o;
+        control = 0.5*get_gain()*(fabs(stretch)+stretch)/f_o;
 
-    SimTK::Vector actControls(1,control);
-    // add reflex controls to whatever controls are already in place.
-    musc.addInControls(actControls, controls);
+        SimTK::Vector actControls(1,control);
+        // add reflex controls to whatever controls are already in place.
+        // make a member function to get the refernce of the spindles that have the referneces to the muscles
+        musc.addInControls(actControls, controls);
+    }
         
 }
 

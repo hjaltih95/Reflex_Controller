@@ -53,6 +53,7 @@ int main() {
         // DEFINE BODIES AND JOINTS OF THE MODEL //
         ///////////////////////////////////////////
         // Create an OpenSim model and set its name
+        
         Model osimModel;
         osimModel.setName("tugofWar");
         
@@ -76,7 +77,7 @@ int main() {
         // Create a new block body with the specified properties
         OpenSim::Body *block = new OpenSim::Body("block", blockMass, blockMassCenter, blockInertia);
         
-        block->attachGeometry(new Mesh("block.vtb"));
+        block->attachGeometry(new Mesh("block.vtp"));
         
         // FREE JOINT
         
@@ -138,9 +139,7 @@ int main() {
         ///////////////////////////////////
         // DEFINE CONTROLS FOR THE MODEL //
         ///////////////////////////////////
-        
-        
-        
+        // create a spindle that connects to the reflex controller
         ReflexController *stretchReflex = new ReflexController();
         stretchReflex->setActuators(osimModel.updActuators());
         

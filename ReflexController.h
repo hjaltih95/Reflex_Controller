@@ -37,7 +37,7 @@ namespace OpenSim {
 
 
 // Forward declarations of classes that are used by the ReflexController
-
+class SimpleSpindle;
 
 
 //=============================================================================
@@ -62,13 +62,11 @@ public:
         "The intended rest length of the spindle");
     OpenSim_DECLARE_PROPERTY(gain, double,
     "The factor by which the stretch reflex is scaled.");
+    OpenSim_DECLARE_LIST_PROPERTY(spindle_list, std::string, "The list of model spindles that this controller will depend upond for control");
 
-    
-//=============================================================================
+//==============================================================================
 // SOCKETS
-//=============================================================================
-
-     OpenSim_DECLARE_SOCKET(muscle, Muscle, "The muscle that the controller controls");
+//==============================================================================
     
 //=============================================================================
 // METHODS
@@ -79,7 +77,6 @@ public:
     /** Default constructor. */
     ReflexController();
     ReflexController(const std::string& name,
-                     const Muscle& muscle,
                      double rest_length,
                      double gain);
 
@@ -87,12 +84,20 @@ public:
     // assignment operator.
     
     //--------------------------------------------------------------------------
-    // GET/SET
+    // Controller Interface
     //--------------------------------------------------------------------------
     
-    // SOCKET get/set
-      //get the muscle to witch this controller attatches to
-      const Muscle& getMuscle() const;
+    /** replace the current set of spindles with the provided set*/
+    void setSpindles(const Set<SimpleSpindle>& spindles);
+    /**add the current set of spindles*/
+    void addSpindle(const SimpleSpindle& spindle);
+    /**get a const refernece to the current set of spindles*/
+    const Set<const SimpleSpindle>& getSpindleSet() const;
+    /** get a writable reference to the set of const spindles for this controllerr*/
+    Set<const SimpleSpindle>& updSpindles();
+    
+
+    
 
     /** Compute the controls for stretch reflex
      *  This method defines the behavior of the stretch reflex
@@ -110,16 +115,18 @@ private:
     // ModelComponent interface to connect this component to its model
     void extendConnectToModel(Model& aModel) override;
 
+    // the set of Model spindles that this controller controls
+    Set<const SimpleSpindle> _spindleSet;
     
 protected:
     double _normalizedRestLength;
     //=========================================================================
-};  // END of class SimpleSpindle
+};  // END of class ReflexController
 
 }; //namespace
 //=============================================================================
 //=============================================================================
 
-#endif // OPENSIM_SimpleSpindle_H_
+#endif // OPENSIM_ReflexController_H_
 
 
