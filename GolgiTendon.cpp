@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------- *
- *                      OpenSim:  SimpleSpindle.cpp                           *
+ *                      OpenSim:  GolgiTendon.cpp                           *
  * -------------------------------------------------------------------------- *
  * The OpenSim API is a toolkit for musculoskeletal modeling and simulation.  *
  * See http://opensim.stanford.edu and the NOTICE file for more information.  *
@@ -26,10 +26,10 @@
 //=============================================================================
 // INCLUDES
 //=============================================================================
-#include "SimpleSpindle.h"
+#include "GolgiTendon.h"
 #include <OpenSim/OpenSim.h>
 #include "OpenSim/Simulation/Model/Muscle.h"
-#include "OpenSim/Actuators/FirstOrderMuscleActivationDynamics.h"
+
 
 
 // This allows us to use OpenSim functions, classes, etc., without having to
@@ -44,23 +44,22 @@ using namespace SimTK;
 //=============================================================================
 //_____________________________________________________________________________
 /* Default constructor. */
-SimpleSpindle::SimpleSpindle()
+GolgiTendon::GolgiTendon()
 {
     constructProperties();
 }
 
 /* Convenience constructor. */
-SimpleSpindle::SimpleSpindle(const std::string& name,
-                             const Muscle& muscle,
-                             double rest_length)
+GolgiTendon::GolgiTendon(const std::string& name,
+                         const Muscle& muscle)
 {
     OPENSIM_THROW_IF(name.empty(), ComponentHasNoName, getClassName());
-    
+       
     setName(name);
     connectSocket_muscle(muscle);
     
     constructProperties();
-    set_normalized_rest_length(rest_length);
+
 
 }
 
@@ -82,47 +81,16 @@ SimpleSpindle::SimpleSpindle(const std::string& name,
 
  * Construct Properties
  */
-void SimpleSpindle::constructProperties()
+void GolgiTendon::constructProperties()
 {
-
-    constructProperty_normalized_rest_length(1.0);
+    
 }
 
-void SimpleSpindle::extendConnectToModel(Model &model)
+
+void GolgiTendon::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
-
     
-}
-
-//=============================================================================
-// SIGNALS
-//=============================================================================
-
-double SimpleSpindle::getSignal(const SimTK::State& s) const
-{
-    
-    double signal = 0;
-    double rest_length = get_normalized_rest_length();
-    // optimal fiber length
-    double f_o = 1;
-    // muscle length
-    double length = 0;
-    // muscle stretsch
-    double stretch = 0;
-    // muscle lengthening speed
-    double speed = 0;
-
-    const Muscle& musc = getMuscle();
-    // get optimal fiber length and muscle length
-    f_o = musc.getOptimalFiberLength();
-    length = musc.getLength(s);
-    // Compute stretch, the muscle spindle only monitors the muscle fiber length not the muscle-tendon length
-    stretch = length-rest_length*f_o;
-    
-    signal = stretch;
-    
-    return signal;
 }
 
 //=============================================================================
@@ -130,11 +98,38 @@ double SimpleSpindle::getSignal(const SimTK::State& s) const
 //=============================================================================
 
 //-----------------------------------------------------------------------------
-// Spindle frame
+// Golgi Tendon muscle
 //-----------------------------------------------------------------------------
-const Muscle& SimpleSpindle::getMuscle() const
+const Muscle& GolgiTendon::getMuscle() const
 {
     return getSocket<Muscle>("muscle").getConnectee();
 }
 
+
+//=============================================================================
+// SIGNALS
+//=============================================================================
+//_____________________________________________________________________________
+/**
+ * Compute the signals for Golgi Tendon
+ *
+ * @param s         current state of the system
+ */
+
+double GolgiTendon::getTLength(const SimTK::State& s) const
+{
+    double length = 0;
+    double tendon_length = 0;
+    double tendon_slack_length = 0;
+    
+    const Muscle& musc = getMuscle();
+    
+    tendon_length = musc.getTendonLength(s);
+    tendon_slack_length = musc.getTendonSlackLength();
+    
+    
+    length = tendon_length - tendon_slack_length;
+    
+    return length;
+}
 

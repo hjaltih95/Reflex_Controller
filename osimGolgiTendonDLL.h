@@ -1,7 +1,7 @@
-#ifndef _osimSimpleSpindleDLL_h_
-#define _osimSimpleSpindleDLL_h_
+#ifndef _osimGolgiTendonDLL_h_
+#define _osimGolgiTendonDLL_h_
 /* -------------------------------------------------------------------------- *
- *                       OpenSim:  osimSimpleSpindleDLL.h                 *
+ *                       OpenSim:  osimGolgiTendonDLL.h                 *
  * -------------------------------------------------------------------------- *
  * The OpenSim API is a toolkit for musculoskeletal modeling and simulation.  *
  * See http://opensim.stanford.edu and the NOTICE file for more information.  *
@@ -26,7 +26,7 @@
 // UNIX PLATFORM
 #ifndef _WIN32
 
-#define OSIMSIMPLESPINDLE_API
+#define OSIMGOLGITENDON_API
 
 // WINDOWS PLATFORM
 #else
@@ -34,13 +34,13 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <windows.h>
-#ifdef OSIMSIMPLESPINDLE_EXPORTS
-#define OSIMSIMPLESPINDLE_API __declspec(dllexport)
+#ifdef OSIMGOLGITENDON_EXPORTS
+#define OSIMGOLGITENDON_API __declspec(dllexport)
 #else
-#define OSIMSIMPLESPINDLE_API __declspec(dllimport)
+#define OSIMGOLGITENDON_API __declspec(dllimport)
 #endif
 
 #endif // PLATFORM
 
 
-#endif // __osimSimpleSpindleDLL_h__
+#endif // __osimGolgiTendonDLL_h__

@@ -37,6 +37,7 @@
 		7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88A970D9534843D9807C81E4 /* ReflexController.cpp */; };
 		EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */; };
 		EFB7B010275F7E890086F942 /* mainSpindle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF773DD8275EDC860080CCBE /* mainSpindle.cpp */; };
+		EFB7B018276B5F0F0086F942 /* GolgiTendon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EFB7B016276B5F0E0086F942 /* GolgiTendon.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,9 @@
 		EF773DDC275F43000080CCBE /* ground.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ground.vtp; sourceTree = "<group>"; };
 		EF773DDD275F43010080CCBE /* block.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = block.vtp; sourceTree = "<group>"; };
 		EFB7B00F275F7D940086F942 /* ReflexController */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ReflexController; sourceTree = "<group>"; };
+		EFB7B015276B5F0D0086F942 /* GolgiTendon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GolgiTendon.h; sourceTree = "<group>"; };
+		EFB7B016276B5F0E0086F942 /* GolgiTendon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GolgiTendon.cpp; sourceTree = "<group>"; };
+		EFB7B017276B5F0F0086F942 /* osimGolgiTendonDLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osimGolgiTendonDLL.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				EF773DD8275EDC860080CCBE /* mainSpindle.cpp */,
 				EF773DD52759BEF80080CCBE /* SimpleSpindle.cpp */,
 				88A970D9534843D9807C81E4 /* ReflexController.cpp */,
+				EFB7B016276B5F0E0086F942 /* GolgiTendon.cpp */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
@@ -151,6 +156,8 @@
 		8AFCD78A4AF44EBCBDDB46CB /* Header Files */ = {
 			isa = PBXGroup;
 			children = (
+				EFB7B015276B5F0D0086F942 /* GolgiTendon.h */,
+				EFB7B017276B5F0F0086F942 /* osimGolgiTendonDLL.h */,
 				EF773DD72759C11F0080CCBE /* osimSimpleSpindleDLL.h */,
 				EF773DD42759826E0080CCBE /* SimpleSpindle.h */,
 				35369CC1277B49D8B0270089 /* ReflexController.h */,
@@ -249,6 +256,7 @@
 			files = (
 				7FCD2093A12A428995996491 /* ReflexController.cpp in Sources */,
 				EF773DD62759BEF80080CCBE /* SimpleSpindle.cpp in Sources */,
+				EFB7B018276B5F0F0086F942 /* GolgiTendon.cpp in Sources */,
 				EFB7B010275F7E890086F942 /* mainSpindle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
