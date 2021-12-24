@@ -62,7 +62,7 @@ public:
 // OUTPUTS
 //=============================================================================
     // we get our propriceptive afferents
-    OpenSim_DECLARE_OUTPUT(length, double, getTLength, SimTK::Stage::Position);
+    OpenSim_DECLARE_OUTPUT(length, double, getTendonLength, SimTK::Stage::Position);
     //
 //=============================================================================
 // METHODS
@@ -93,8 +93,8 @@ public:
 //--------------------------------------------------------------------------
 /** @name Golgi Tendon State Dependendt Access Methods
     Get quanitites of interest common to all spindles*/
-    void setTLength(SimTK::State& s, double signal) const;
-    double getTLength(const SimTK::State& s) const;
+    void setTendonLength(SimTK::State& s, double signal) const;
+    double getTendonLength(const SimTK::State& s) const;
         
 
 private:

@@ -116,7 +116,7 @@ const Muscle& GolgiTendon::getMuscle() const
  * @param s         current state of the system
  */
 
-double GolgiTendon::getTLength(const SimTK::State& s) const
+double GolgiTendon::getTendonLength(const SimTK::State& s) const
 {
     double length = 0;
     double tendon_length = 0;
