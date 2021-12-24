@@ -66,8 +66,9 @@ public:
 // OUTPUTS
 //=============================================================================
     // we get our propriceptive afferents
-    OpenSim_DECLARE_OUTPUT(signal, double, getSignal, SimTK::Stage::Velocity);
+    OpenSim_DECLARE_OUTPUT(spindle_length, double, getSpindleLength, SimTK::Stage::Position);
     // add outputs for Ia and II afferents
+    OpenSim_DECLARE_OUTPUT(spindle_speed, double, getSpindleSpeed, SimTK::Stage::Velocity);
 //=============================================================================
 // METHODS
 //=============================================================================
@@ -101,12 +102,12 @@ public:
 //--------------------------------------------------------------------------
 /** @name Spindle State Dependendt Access Methods
     Get quanitites of interest common to all spindles*/
-    void setSignal(SimTK::State& s, double signal) const;
-    double getSignal(const SimTK::State& s) const;
+    void setSpindleLength(SimTK::State& s, double spindle_length) const;
+    double getSpindleLength(const SimTK::State& s) const;
     
-
-
-
+    void setSpindleSpeed(SimTK::State& s, double spindle_velocity) const;
+    double getSpindleSpeed(const SimTK::State& s) const;
+    
 private:
     // Connect properties to local pointers.  */
     void constructProperties();

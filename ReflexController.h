@@ -38,6 +38,8 @@ namespace OpenSim {
 
 // Forward declarations of classes that are used by the ReflexController
 class SimpleSpindle;
+class GolgiTendon;
+
 
 
 //=============================================================================
@@ -60,9 +62,11 @@ public:
     
     OpenSim_DECLARE_PROPERTY(normalized_rest_length, double,
         "The intended rest length of the spindle");
-    OpenSim_DECLARE_PROPERTY(gain, double,
+    OpenSim_DECLARE_PROPERTY(gain_length, double,
     "The factor by which the stretch reflex is scaled.");
+    OpenSim_DECLARE_PROPERTY(gain_velocity, double, "The factor by which the stretch reflex speed is scaled");
     OpenSim_DECLARE_LIST_PROPERTY(spindle_list, std::string, "The list of model spindles that this controller will depend upond for control");
+        OpenSim_DECLARE_LIST_PROPERTY(golgi_list, std::string, "The list of model golgi-tendons that this controller will depend upond for control");
 
 //==============================================================================
 // SOCKETS
@@ -78,7 +82,8 @@ public:
     ReflexController();
     ReflexController(const std::string& name,
                      double rest_length,
-                     double gain);
+                     double gain_l,
+                     double gain_v);
 
     // Uses default (compiler-generated) destructor, copy constructor and copy 
     // assignment operator.
@@ -97,6 +102,14 @@ public:
     Set<const SimpleSpindle>& updSpindles();
     
 
+    /** replace the current set of golgi-tendons with the provided set*/
+    void setGolgis(const Set<GolgiTendon>& golgis);
+    /**add the current set of golgi-tendons*/
+    void addGolgi(const GolgiTendon& golgi);
+    /**get a const refernece to the current set of golgi-tendons*/
+    const Set<const GolgiTendon>& getGolgiSet() const;
+    /** get a writable reference to the set of const gogli-tendons for this controllerr*/
+    Set<const GolgiTendon>& updGolgis();
     
 
     /** Compute the controls for stretch reflex
@@ -117,6 +130,8 @@ private:
 
     // the set of Model spindles that this controller controls
     Set<const SimpleSpindle> _spindleSet;
+    
+    Set<const GolgiTendon> _golgiSet;
     
 protected:
     double _normalizedRestLength;

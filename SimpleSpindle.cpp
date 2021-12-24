@@ -99,10 +99,10 @@ void SimpleSpindle::extendConnectToModel(Model &model)
 // SIGNALS
 //=============================================================================
 
-double SimpleSpindle::getSignal(const SimTK::State& s) const
+double SimpleSpindle::getSpindleLength(const SimTK::State& s) const
 {
     
-    double signal = 0;
+    double spindle_length = 0;
     double rest_length = get_normalized_rest_length();
     // optimal fiber length
     double f_o = 1;
@@ -110,9 +110,8 @@ double SimpleSpindle::getSignal(const SimTK::State& s) const
     double length = 0;
     // muscle stretsch
     double stretch = 0;
-    // muscle lengthening speed
-    double speed = 0;
 
+    // get a reference to the muscle
     const Muscle& musc = getMuscle();
     // get optimal fiber length and muscle length
     f_o = musc.getOptimalFiberLength();
@@ -120,9 +119,25 @@ double SimpleSpindle::getSignal(const SimTK::State& s) const
     // Compute stretch, the muscle spindle only monitors the muscle fiber length not the muscle-tendon length
     stretch = length-rest_length*f_o;
     
-    signal = stretch;
+    spindle_length = stretch;
     
-    return signal;
+    return spindle_length;
+}
+
+double SimpleSpindle::getSpindleSpeed(const SimTK::State& s) const
+{
+    double spindle_speed = 0;
+    // muscle speed
+    double speed = 0;
+    
+    // get a reference to the muscle
+    const Muscle& musc = getMuscle();
+    // muscle lengthening speed
+    speed = musc.getLengtheningSpeed(s);
+    
+    spindle_speed = speed;
+    
+    return spindle_speed;
 }
 
 //=============================================================================
