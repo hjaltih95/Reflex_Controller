@@ -32,6 +32,7 @@
 #include "OpenSim/Actuators/FirstOrderMuscleActivationDynamics.h"
 
 
+
 // This allows us to use OpenSim functions, classes, etc., without having to
 // prefix the names of those things with "OpenSim::".
 using namespace OpenSim;
@@ -52,7 +53,8 @@ SimpleSpindle::SimpleSpindle()
 /* Convenience constructor. */
 SimpleSpindle::SimpleSpindle(const std::string& name,
                              const Muscle& muscle,
-                             double rest_length)
+                             double rest_length,
+                             double delay)
 {
     OPENSIM_THROW_IF(name.empty(), ComponentHasNoName, getClassName());
     
@@ -61,6 +63,7 @@ SimpleSpindle::SimpleSpindle(const std::string& name,
     
     constructProperties();
     set_normalized_rest_length(rest_length);
+    set_delay(delay);
 
 }
 
@@ -86,12 +89,34 @@ void SimpleSpindle::constructProperties()
 {
 
     constructProperty_normalized_rest_length(1.0);
+    constructProperty_delay(0.0);
+}
+
+void SimpleSpindle::addToSystem(SimTK::MultibodySystem& system) const
+{
+    Super::addToSystem(system);
+    SimpleSpindle* mutableThis = const_cast<SimpleSpindle *>(this);
+    
 }
 
 void SimpleSpindle::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
-
+    
+    muscleStretchHistory.setSize(0);
+    muscleStretchHistory.setMemoryOwner(true);
+    muscleSpeedHistory.setSize(0);
+    muscleSpeedHistory.setMemoryOwner(true);
+    
+    const Muscle& musc = getMuscle();
+    
+    PiecewiseLinearFunction muscleStretch;
+    muscleStretch.setName(musc.getName());
+    muscleStretchHistory.cloneAndAppend(muscleStretch);
+    
+    PiecewiseLinearFunction muscleSpeed;
+    muscleSpeed.setName(musc.getName());
+    muscleSpeedHistory.cloneAndAppend(muscleSpeed);
     
 }
 
@@ -101,6 +126,8 @@ void SimpleSpindle::extendConnectToModel(Model &model)
 
 double SimpleSpindle::getSpindleLength(const SimTK::State& s) const
 {
+    // get the time
+    double time = s.getTime();
     
     double spindle_length = 0;
     double rest_length = get_normalized_rest_length();
@@ -118,24 +145,41 @@ double SimpleSpindle::getSpindleLength(const SimTK::State& s) const
     length = musc.getLength(s);
     // Compute stretch, the muscle spindle only monitors the muscle fiber length not the muscle-tendon length
     stretch = length-rest_length*f_o;
+    muscleStretchHistory.get(musc.getName()).addPoint(time, stretch);
     
+    if ((time-get_delay()) < muscleStretchHistory.get(musc.getName()).getXValues()[0])
+    {
+        spindle_length = 0;
+    }
+    else {
     spindle_length = stretch;
+    }
     
     return spindle_length;
 }
 
 double SimpleSpindle::getSpindleSpeed(const SimTK::State& s) const
 {
+    // get the time
+    double time = s.getTime();
+    // initiate the spindle speed variable
     double spindle_speed = 0;
     // muscle speed
     double speed = 0;
-    
     // get a reference to the muscle
     const Muscle& musc = getMuscle();
     // muscle lengthening speed
     speed = musc.getLengtheningSpeed(s);
+    muscleSpeedHistory.get(musc.getName()).addPoint(time, speed);
     
+    if ((time-get_delay()) < muscleSpeedHistory.get(musc.getName()).getXValues()[0])
+    {
+        spindle_speed = 0;
+    }
+    else
+    {
     spindle_speed = speed;
+    }
     
     return spindle_speed;
 }

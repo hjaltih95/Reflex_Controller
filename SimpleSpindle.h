@@ -31,6 +31,8 @@
 #include "OpenSim/Simulation/Model/Muscle.h"
 #include "OpenSim/Simulation/Model/ModelComponent.h"
 #include "OpenSim/Simulation/Control/Controller.h"
+#include "OpenSim/Common/PiecewiseLinearFunction.h"
+#include "OpenSim/Simulation/Model/Model.h"
 
 
 
@@ -56,6 +58,8 @@ public:
     
     OpenSim_DECLARE_PROPERTY(normalized_rest_length, double,
         "The intended rest length of the spindle");
+    OpenSim_DECLARE_PROPERTY(delay, double,
+                            "The time delay (seconds) between the muscle stretch and the stretch reflex signal");
 //==============================================================================
 // SOCKETS
 //==============================================================================
@@ -77,9 +81,10 @@ public:
     //--------------------------------------------------------------------------
     /** Default constructor. */
     SimpleSpindle();
-    SimpleSpindle( const std::string& name,
+    SimpleSpindle(const std::string& name,
                   const Muscle& muscle,
-                  double rest_length);
+                  double rest_length,
+                  double delay);
 
     // Uses default (compiler-generated) destructor, copy constructor and copy 
     // assignment operator.
@@ -113,10 +118,19 @@ private:
     void constructProperties();
     // ModelComponent interface to connect this component to its model
     void extendConnectToModel(Model& aModel) override;
-
+    // ModelComponent interface to add computational elemetns to the SimTK system
+    void addToSystem(SimTK::MultibodySystem& system) const;
+    
+    //=============================================================================
+    // Private Members
+    //=============================================================================
+    
+    mutable OpenSim::Set<PiecewiseLinearFunction> muscleStretchHistory;
+    mutable OpenSim::Set<PiecewiseLinearFunction> muscleSpeedHistory;
     
 protected:
     double _normalizedRestLength;
+    
     //=========================================================================
 };  // END of class SimpleSpindle
 

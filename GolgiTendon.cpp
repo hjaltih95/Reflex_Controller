@@ -51,7 +51,8 @@ GolgiTendon::GolgiTendon()
 
 /* Convenience constructor. */
 GolgiTendon::GolgiTendon(const std::string& name,
-                         const Muscle& muscle)
+                         const Muscle& muscle,
+                         double delay)
 {
     OPENSIM_THROW_IF(name.empty(), ComponentHasNoName, getClassName());
        
@@ -59,6 +60,7 @@ GolgiTendon::GolgiTendon(const std::string& name,
     connectSocket_muscle(muscle);
     
     constructProperties();
+    set_delay(delay);
 
 
 }
@@ -86,10 +88,24 @@ void GolgiTendon::constructProperties()
     
 }
 
+void GolgiTendon::addToSystem(SimTK::MultibodySystem& system)const
+{
+    Super::addToSystem(system);
+    GolgiTendon* mutableThis = const_cast<GolgiTendon *>(this);
+}
 
 void GolgiTendon::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
+    
+    muscleTendonHistory.setSize(0);
+    muscleTendonHistory.setMemoryOwner(true);
+    
+    const Muscle& musc = getMuscle();
+    
+    PiecewiseLinearFunction muscleTendon;
+    muscleTendon.setName(musc.getName());
+    muscleTendonHistory.cloneAndAppend(muscleTendon);
     
 }
 
@@ -111,24 +127,35 @@ const Muscle& GolgiTendon::getMuscle() const
 //=============================================================================
 //_____________________________________________________________________________
 /**
- * Compute the signals for Golgi Tendon
+ * Compute the tendon length for the Golgi Tendon
  *
  * @param s         current state of the system
  */
 
 double GolgiTendon::getTendonLength(const SimTK::State& s) const
 {
+    double time = s.getTime();
     double length = 0;
     double tendon_length = 0;
     double tendon_slack_length = 0;
+    double golgi_length = 0;
     
     const Muscle& musc = getMuscle();
     
     tendon_length = musc.getTendonLength(s);
     tendon_slack_length = musc.getTendonSlackLength();
+    golgi_length = tendon_length - tendon_slack_length;
     
+    muscleTendonHistory.get(musc.getName()).addPoint(time, golgi_length);
     
-    length = tendon_length - tendon_slack_length;
+    if((time - get_delay()) < muscleTendonHistory.get(musc.getName()).getXValues()[0])
+    {
+        length = 0;
+    }
+    else
+    {
+        length = golgi_length;
+    }
     
     return length;
 }

@@ -173,11 +173,8 @@ void ReflexController::extendConnectToModel(Model &model)
     }
     
     
-    
     Set<const Actuator>& actuators = updActuators();
 
-    
-    
     int cnt=0;
     
     while(cnt < actuators.getSize()){
@@ -196,6 +193,7 @@ void ReflexController::extendConnectToModel(Model &model)
 // GET AND SET
 //=============================================================================
 
+// Spindles getter and setters
 void ReflexController::setSpindles(const Set<SimpleSpindle>& spindles)
 {
     _spindleSet.setMemoryOwner(false);
@@ -219,6 +217,8 @@ Set <const SimpleSpindle>& ReflexController::updSpindles() { return _spindleSet;
 
 const Set<const SimpleSpindle>& ReflexController::getSpindleSet() const { return _spindleSet; }
 
+
+// Golgi Tendon getters and setters
 void ReflexController::setGolgis(const Set<GolgiTendon>& golgis)
 {
     _golgiSet.setMemoryOwner(false);
@@ -261,13 +261,11 @@ void ReflexController::computeControls(const State& s,
     double stretch = 0;
     //reflex control
     double control = 0;
-    double length = 0;
+    double tendon_length = 0;
     double speed = 0;
     double max_speed = 0;
     double k_l = get_gain_length();
     double k_v = get_gain_velocity();
-    
-    
     
     const Set<const SimpleSpindle>& spindles = getSpindleSet();
     const Set<const GolgiTendon>& golgis = getGolgiSet();
@@ -279,7 +277,7 @@ void ReflexController::computeControls(const State& s,
         
         stretch = spindle.getSpindleLength(s);
         speed = spindle.getSpindleSpeed(s);
-        length = golgi.getTLength(s);
+        tendon_length = golgi.getTendonLength(s);
 
         const Muscle& musc = spindle.getMuscle();
     
@@ -290,7 +288,7 @@ void ReflexController::computeControls(const State& s,
     
         control = 0.5*k_l*(fabs(stretch)+stretch)/f_o;
         control += 0.5*k_v*(fabs(speed)+speed)/max_speed;
-        control += 0.5*k_l*(fabs(length)+length)/t_o;
+        control += 0.5*k_l*(fabs(tendon_length)+tendon_length)/t_o;
         
 
         SimTK::Vector actControls(1,control);
@@ -298,6 +296,5 @@ void ReflexController::computeControls(const State& s,
         // make a member function to get the refernce of the spindles that have the referneces to the muscles
         musc.addInControls(actControls, controls);
     }
-        
 }
 

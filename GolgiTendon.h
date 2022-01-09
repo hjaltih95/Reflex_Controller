@@ -30,6 +30,8 @@
 #include "osimGolgiTendonDLL.h"
 #include "OpenSim/Simulation/Control/Controller.h"
 #include "OpenSim/Simulation/Model/Muscle.h"
+#include "OpenSim/Common/PiecewiseLinearFunction.h"
+#include "OpenSim/Simulation/Model/Model.h"
 
 
 
@@ -52,7 +54,8 @@ public:
 //=============================================================================
 // PROPERTIES
 //=============================================================================
-    
+    OpenSim_DECLARE_PROPERTY(delay, double,
+                            "The time delay (seconds) between the muscle stretch and the stretch reflex signal");
 //==============================================================================
 // SOCKETS
 //==============================================================================
@@ -73,7 +76,8 @@ public:
     /** Default constructor. */
     GolgiTendon();
     GolgiTendon(const std::string& name,
-                const Muscle& muscle);
+                const Muscle& muscle,
+                double delay);
 
     // Uses default (compiler-generated) destructor, copy constructor and copy 
     // assignment operator.
@@ -102,7 +106,10 @@ private:
     void constructProperties();
     // ModelComponent interface to connect this component to its model
     void extendConnectToModel(Model& aModel) override;
-
+    // ModelComponent interface to add computational elemetns to the SimTK system
+    void addToSystem(SimTK::MultibodySystem& system) const;
+    
+    mutable OpenSim::Set<PiecewiseLinearFunction> muscleTendonHistory;
     
 protected:
     //=========================================================================
