@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------- *
- *                      OpenSim:  SimpleSpindle.cpp                           *
+ *                      OpenSim:  Delay.cpp                                   *
  * -------------------------------------------------------------------------- *
  * The OpenSim API is a toolkit for musculoskeletal modeling and simulation.  *
  * See http://opensim.stanford.edu and the NOTICE file for more information.  *
@@ -26,10 +26,9 @@
 //=============================================================================
 // INCLUDES
 //=============================================================================
-#include "SimpleSpindle.h"
+#include "Delay.h"
 #include <OpenSim/OpenSim.h>
 #include "OpenSim/Simulation/Model/Muscle.h"
-#include "OpenSim/Actuators/FirstOrderMuscleActivationDynamics.h"
 
 
 
@@ -45,25 +44,24 @@ using namespace SimTK;
 //=============================================================================
 //_____________________________________________________________________________
 /* Default constructor. */
-SimpleSpindle::SimpleSpindle()
+Delay::Delay()
 {
     constructProperties();
 }
 
 /* Convenience constructor. */
-SimpleSpindle::SimpleSpindle(const std::string& name,
-                             const Muscle& muscle,
-                             double rest_length,
-                             double delay)
+Delay::Delay(const std::string& name,
+             const Muscle& muscle,
+             double delay)
 {
     OPENSIM_THROW_IF(name.empty(), ComponentHasNoName, getClassName());
-    
+       
     setName(name);
     connectSocket_muscle(muscle);
     
     constructProperties();
-    set_normalized_rest_length(rest_length);
     set_delay(delay);
+
 
 }
 
@@ -85,105 +83,31 @@ SimpleSpindle::SimpleSpindle(const std::string& name,
 
  * Construct Properties
  */
-void SimpleSpindle::constructProperties()
+void Delay::constructProperties()
 {
-
-    constructProperty_normalized_rest_length(1.0);
-    constructProperty_delay(0.0);
+    
 }
 
-void SimpleSpindle::addToSystem(SimTK::MultibodySystem& system) const
+void Delay::addToSystem(SimTK::MultibodySystem& system) const
 {
     Super::addToSystem(system);
-    SimpleSpindle* mutableThis = const_cast<SimpleSpindle *>(this);
+    Delay* mutableThis = const_cast<Delay *>(this);
     
 }
 
-void SimpleSpindle::extendConnectToModel(Model &model)
+
+void Delay::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
-    
-    muscleStretchHistory.setSize(0);
-    muscleStretchHistory.setMemoryOwner(true);
-    muscleSpeedHistory.setSize(0);
-    muscleSpeedHistory.setMemoryOwner(true);
+    muscleHistory.setSize(0);
+    muscleHistory.setMemoryOwner(true);
     
     const Muscle& musc = getMuscle();
     
-    PiecewiseLinearFunction muscleStretch;
-    muscleStretch.setName(musc.getName());
-    muscleStretchHistory.cloneAndAppend(muscleStretch);
+    PiecewiseLinearFunction muscleSignal;
+    muscleSignal.setName(musc.getName());
+    muscleHistory.cloneAndAppend(muscleSignal);
     
-    PiecewiseLinearFunction muscleSpeed;
-    muscleSpeed.setName(musc.getName());
-    muscleSpeedHistory.cloneAndAppend(muscleSpeed);
-    
-}
-
-//=============================================================================
-// SIGNALS
-//=============================================================================
-
-double SimpleSpindle::getSpindleLength(const SimTK::State& s) const
-{
-    // get the time
-    double time = s.getTime();
-    
-    double spindle_length = 0;
-    double rest_length = get_normalized_rest_length();
-    // optimal fiber length
-    double f_o = 1;
-    // muscle length
-    double length = 0;
-    // muscle stretsch
-    double stretch = 0;
-
-    // get a reference to the muscle
-    const Muscle& musc = getMuscle();
-    // get optimal fiber length and muscle length
-    f_o = musc.getOptimalFiberLength();
-    length = musc.getLength(s);
-    // Compute stretch, the muscle spindle only monitors the muscle fiber length not the muscle-tendon length
-    stretch = length-rest_length*f_o;
-    muscleStretchHistory.get(musc.getName()).addPoint(time, stretch);
-    
-    if ((time-get_delay()) < muscleStretchHistory.get(musc.getName()).getXValues()[0])
-    {
-        spindle_length = 0;
-    }
-    else {
-    spindle_length = muscleStretchHistory.get(musc.getName()).calcValue(SimTK::Vector(1,time-get_delay()));
-    }
-    
-    return spindle_length;
-}
-
-double SimpleSpindle::getSpindleSpeed(const SimTK::State& s) const
-{
-    // get the time
-    double time = s.getTime();
-    // initiate the spindle speed variable
-    double spindle_speed = 0;
-    // muscle speed
-    double speed = 0;
-    // get a reference to the muscle
-    const Muscle& musc = getMuscle();
-    // muscle lengthening speed
-    speed = musc.getLengtheningSpeed(s);
-    
-    // create a delay component instead of implementing it through properties
-    muscleSpeedHistory.get(musc.getName()).addPoint(time, speed);
-    
-    if ((time-get_delay()) < muscleSpeedHistory.get(musc.getName()).getXValues()[0])
-    {
-        spindle_speed = 0;
-    }
-    else
-    {
-    spindle_speed = muscleSpeedHistory.get(musc.getName()).calcValue(SimTK::Vector(1,time-get_delay()));
-    }
-    
-    return spindle_speed;
 }
 
 //=============================================================================
@@ -191,11 +115,43 @@ double SimpleSpindle::getSpindleSpeed(const SimTK::State& s) const
 //=============================================================================
 
 //-----------------------------------------------------------------------------
-// Spindle frame
+//
 //-----------------------------------------------------------------------------
-const Muscle& SimpleSpindle::getMuscle() const
+const Muscle& Delay::getMuscle() const
 {
     return getSocket<Muscle>("muscle").getConnectee();
 }
 
+
+//=============================================================================
+// SIGNALS
+//=============================================================================
+//_____________________________________________________________________________
+/**
+ * Compute the signals after a delay /tau
+ *
+ * @param s         current state of the system
+ */
+
+double Delay::getSignal(const SimTK::State& s) const
+{
+    double signal = getInputValue<double>(s, "signal");
+    double time = s.getTime();
+    double delaySignal = 0;
+    
+    const Muscle& musc = getMuscle();
+    
+    muscleHistory.get(musc.getName()).addPoint(time, signal);
+    
+    if((time - get_delay()) < muscleHistory.get(musc.getName()).getXValues()[0])
+    {
+        delaySignal = 0;
+    }
+    else
+    {
+        delaySignal = muscleHistory.get(musc.getName()).calcValue(SimTK::Vector(1,time-get_delay()));
+    }
+    
+    return delaySignal;
+}
 

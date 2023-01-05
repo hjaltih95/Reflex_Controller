@@ -94,7 +94,7 @@ public:
 //--------------------------------------------------------------------------
     // get/set the rest length of the spindle
     double getNormalizedRestLength() const;
-    void setNormalizedRestLength(double normalizedRestLength);
+    void setNormalizedRestLength(double _normalizedRestLength);
     
   // SOCKET get/set
     

@@ -106,6 +106,9 @@ void ReflexController::extendConnectToModel(Model &model)
 {
     Super::extendConnectToModel(model);
     
+    // make a delay list that corresponds to each spindel/golgi
+
+    
     _spindleSet.setMemoryOwner(false);
     _spindleSet.setSize(0);
     
@@ -139,6 +142,8 @@ void ReflexController::extendConnectToModel(Model &model)
         }
     }
     
+    
+    
     _golgiSet.setMemoryOwner(false);
     _golgiSet.setSize(0);
     
@@ -171,6 +176,8 @@ void ReflexController::extendConnectToModel(Model &model)
             }
         }
     }
+    
+    
     
     
     Set<const Actuator>& actuators = updActuators();

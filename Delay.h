@@ -1,7 +1,7 @@
-#ifndef OPENSIM_GolgiTendon_H_
-#define OPENSIM_GolgiTendon_H_
+#ifndef OPENSIM_Delay_H_
+#define OPENSIM_Delay_H_
 /* -------------------------------------------------------------------------- *
- *                      OpenSim: GolgiTendon.h                              *
+ *                      OpenSim: Delay.h                                      *
  * -------------------------------------------------------------------------- *
  * The OpenSim API is a toolkit for musculoskeletal modeling and simulation.  *
  * See http://opensim.stanford.edu and the NOTICE file for more information.  *
@@ -27,7 +27,7 @@
 //============================================================================
 // INCLUDE
 //============================================================================
-#include "osimGolgiTendonDLL.h"
+#include "osimDelayDLL.h"
 #include "OpenSim/Simulation/Control/Controller.h"
 #include "OpenSim/Simulation/Model/Muscle.h"
 #include "OpenSim/Common/PiecewiseLinearFunction.h"
@@ -47,25 +47,32 @@ namespace OpenSim {
  *
  * @author  Ajay Seth
  */
-class OSIMGOLGITENDON_API GolgiTendon : public ModelComponent {
-OpenSim_DECLARE_CONCRETE_OBJECT(GolgiTendon, ModelComponent);
+class OSIMDELAY_API Delay : public ModelComponent {
+OpenSim_DECLARE_CONCRETE_OBJECT(Delay, ModelComponent);
 
 public:
 //=============================================================================
+// INPUT
+//=============================================================================
+    // Input the signal from the proprioceptors 
+    OpenSim_DECLARE_INPUT(signal, double, SimTK::Stage::Position,
+        "The signal from the proprieceptors");
+    
+//=============================================================================
 // PROPERTIES
 //=============================================================================
-    OpenSim_DECLARE_PROPERTY(delay, double,
-                            "The time delay (seconds) between the muscle stretch and the stretch reflex signal");
+    OpenSim_DECLARE_PROPERTY(delay, double, "The time delay (seconds) between the muscle stretch and the stretch reflex signal");
+    
 //==============================================================================
 // SOCKETS
 //==============================================================================
-    OpenSim_DECLARE_SOCKET(muscle, Muscle, "The muscle that the Golgi Tendon measures");
+    OpenSim_DECLARE_SOCKET(muscle, Muscle, "The muscle that has the spindle and golgi tendon");
     
 //=============================================================================
 // OUTPUTS
 //=============================================================================
     // we get our propriceptive afferents
-    OpenSim_DECLARE_OUTPUT(length, double, getTendonLength, SimTK::Stage::Position);
+    OpenSim_DECLARE_OUTPUT(delaySignal, double, getSignal, SimTK::Stage::Position);
     //
 //=============================================================================
 // METHODS
@@ -74,8 +81,8 @@ public:
     // CONSTRUCTION AND DESTRUCTION
     //--------------------------------------------------------------------------
     /** Default constructor. */
-    GolgiTendon();
-    GolgiTendon(const std::string& name,
+    Delay();
+    Delay(const std::string& name,
                 const Muscle& muscle,
                 double delay);
 
@@ -97,8 +104,8 @@ public:
 //--------------------------------------------------------------------------
 /** @name Golgi Tendon State Dependendt Access Methods
     Get quanitites of interest common to all spindles*/
-    void setTendonLength(SimTK::State& s, double length) const;
-    double getTendonLength(const SimTK::State& s) const;
+    void setSignal(SimTK::State& s, double delaySignal) const;
+    double getSignal(const SimTK::State& s) const;
         
 
 private:
@@ -109,16 +116,17 @@ private:
     // ModelComponent interface to add computational elemetns to the SimTK system
     void addToSystem(SimTK::MultibodySystem& system) const;
     
-    mutable OpenSim::Set<PiecewiseLinearFunction> muscleTendonHistory;
+    mutable OpenSim::Set<PiecewiseLinearFunction> muscleHistory;
+
     
 protected:
     //=========================================================================
-};  // END of class GolgiTendon
+};  // END of class Delay
 
 }; //namespace
 //=============================================================================
 //=============================================================================
 
-#endif // OPENSIM_GolgiTendon_H_
+#endif // OPENSIM_Delay_H_
 
 

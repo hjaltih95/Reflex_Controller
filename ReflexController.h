@@ -111,6 +111,7 @@ public:
     /** get a writable reference to the set of const gogli-tendons for this controllerr*/
     Set<const GolgiTendon>& updGolgis();
     
+    
 
     /** Compute the controls for stretch reflex
      *  This method defines the behavior of the stretch reflex
@@ -132,6 +133,7 @@ private:
     Set<const SimpleSpindle> _spindleSet;
     
     Set<const GolgiTendon> _golgiSet;
+    
     
 protected:
     double _normalizedRestLength;
